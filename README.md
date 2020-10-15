@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-Vull ser com l'@adria-arquimbau (el millor)
+
 
 <!--
 **lluisagusti/lluisagusti** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
