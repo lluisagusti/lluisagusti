@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="Hic Sunt Dracones: a medieval sea chart of the code">
+<title>Hic Sunt Dracones: Mappa Mundi Codicis</title>
+<defs>
+  <radialGradient id="parch" cx="50%" cy="45%" r="75%">
+    <stop offset="0%" stop-color="#f6e7c4"/>
+    <stop offset="55%" stop-color="#ead39f"/>
+    <stop offset="85%" stop-color="#d4b071"/>
+    <stop offset="100%" stop-color="#a97c3f"/>
+  </radialGradient>
+  <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#e3c48a"/>
+    <stop offset="100%" stop-color="#cfa865"/>
+  </linearGradient>
+  <filter id="paper" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.22  0 0 0 0 0.08  0 0 0 0.55 -0.12" result="g"/>
+    <feComposite in="g" in2="SourceGraphic" operator="in"/>
+  </filter>
+  <filter id="blotch" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="11" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.28  0 0 0 0 0.1  0 0 0 0.9 -0.35"/>
+    <feComposite in2="SourceGraphic" operator="in"/>
+  </filter>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="2.2"/>
+  </filter>
+  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+    <line x1="0" y1="0" x2="0" y2="6" stroke="#8a6234" stroke-width="0.6" opacity="0.45"/>
+  </pattern>
+  <clipPath id="mapclip"><rect x="26" y="26" width="848" height="448"/></clipPath>
+</defs>
+<style>
+  .ink{fill:none;stroke:#3b2412;stroke-linecap:round;stroke-linejoin:round}
+  .t{font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,'Times New Roman',serif;fill:#3b2412}
+  .bl{font-family:'Old English Text MT','UnifrakturMaguntia','Luminari','Palatino Linotype',Palatino,Georgia,serif;fill:#3b2412}
+  .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;fill:#6b4423}
+  .wave{animation:drift 6s ease-in-out infinite alternate}
+  .wave.b{animation-duration:7.5s;animation-delay:-2s}
+  .wave.c{animation-duration:5s;animation-delay:-4s}
+  @keyframes drift{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
+  .bob{animation:bob 3.2s ease-in-out infinite}
+  .bob.s{animation-duration:4.1s;animation-delay:-1.3s}
+  .bob.l{animation-duration:5.5s;animation-delay:-2.2s}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  .rose{transform-box:fill-box;transform-origin:center;animation:spin 60s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .needle{transform-box:fill-box;transform-origin:center;animation:needle 4s ease-in-out infinite}
+  @keyframes needle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+  .ship{animation:sail 40s linear infinite}
+  @keyframes sail{0%{transform:translate(0,0)}50%{transform:translate(230px,10px)}100%{transform:translate(0,0)}}
+  .rock{transform-box:fill-box;transform-origin:50% 100%;animation:rock 3s ease-in-out infinite}
+  @keyframes rock{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  .tent{transform-box:fill-box;transform-origin:0% 0%;animation:tent 3.6s ease-in-out infinite}
+  .tent.r{transform-origin:100% 0%;animation-delay:-1.8s}
+  .tent.d2{animation-delay:-0.9s}.tent.d3{animation-delay:-2.7s}
+  @keyframes tent{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+  .head{transform-box:fill-box;transform-origin:50% 100%;animation:sway 2.8s ease-in-out infinite}
+  .h1{animation-delay:-.4s}.h2{animation-delay:-.9s}.h3{animation-delay:-1.5s}.h4{animation-delay:-2.1s}.h5{animation-delay:-2.5s}
+  @keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+  .blink{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+  .leak{transform-box:fill-box;transform-origin:50% 100%;animation:leak 9s ease-in infinite}
+  @keyframes leak{0%{transform:scale(.9)}90%{transform:scale(1.06)}100%{transform:scale(.9)}}
+  .spout{animation:spout 2.4s ease-out infinite}
+  @keyframes spout{0%{opacity:0;transform:translateY(6px)}30%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+  .noodle{stroke-dasharray:6 4;animation:noodle 1.6s linear infinite}
+  @keyframes noodle{to{stroke-dashoffset:-20}}
+  .glow{animation:glow 3s ease-in-out infinite}
+  @keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+  .dash{animation:march 8s linear infinite}
+  @keyframes march{to{stroke-dashoffset:-60}}
+</style>
+
+<rect width="900" height="500" fill="url(#parch)"/>
+<rect width="900" height="500" fill="#000" filter="url(#blotch)" opacity="0.35"/>
+<rect width="900" height="500" fill="#000" filter="url(#paper)" opacity="0.5"/>
+<g clip-path="url(#mapclip)">
+<g stroke="#6b4423" stroke-width="0.6" opacity="0.18"><line x1="785" y1="118" x2="1885" y2="118"/><line x1="785" y1="118" x2="1801.3" y2="539"/><line x1="785" y1="118" x2="1562.8" y2="895.8"/><line x1="785" y1="118" x2="1206" y2="1134.3"/><line x1="785" y1="118" x2="785" y2="1218"/><line x1="785" y1="118" x2="364" y2="1134.3"/><line x1="785" y1="118" x2="7.2" y2="895.8"/><line x1="785" y1="118" x2="-231.3" y2="539"/><line x1="785" y1="118" x2="-315" y2="118"/><line x1="785" y1="118" x2="-231.3" y2="-303"/><line x1="785" y1="118" x2="7.2" y2="-659.8"/><line x1="785" y1="118" x2="364" y2="-898.3"/><line x1="785" y1="118" x2="785" y2="-982"/><line x1="785" y1="118" x2="1206" y2="-898.3"/><line x1="785" y1="118" x2="1562.8" y2="-659.8"/><line x1="785" y1="118" x2="1801.3" y2="-303"/></g>
+<g stroke="#6b4423" stroke-width="0.6" opacity="0.1"><line x1="470" y1="300" x2="1570" y2="300"/><line x1="470" y1="300" x2="1486.3" y2="721"/><line x1="470" y1="300" x2="1247.8" y2="1077.8"/><line x1="470" y1="300" x2="891" y2="1316.3"/><line x1="470" y1="300" x2="470" y2="1400"/><line x1="470" y1="300" x2="49" y2="1316.3"/><line x1="470" y1="300" x2="-307.8" y2="1077.8"/><line x1="470" y1="300" x2="-546.3" y2="721"/><line x1="470" y1="300" x2="-630" y2="300"/><line x1="470" y1="300" x2="-546.3" y2="-121"/><line x1="470" y1="300" x2="-307.8" y2="-477.8"/><line x1="470" y1="300" x2="49" y2="-716.3"/><line x1="470" y1="300" x2="470" y2="-800"/><line x1="470" y1="300" x2="891" y2="-716.3"/><line x1="470" y1="300" x2="1247.8" y2="-477.8"/><line x1="470" y1="300" x2="1486.3" y2="-121"/></g>
+<path d="M26,26 L330,26 C322,40 300,48 292,60 C284,74 262,78 252,92 C244,104 236,112 232,124 C228,138 214,146 204,156 C196,166 200,178 190,190 C178,204 160,206 150,220 C140,234 146,246 136,256 C128,266 112,272 104,286 C96,300 74,304 60,314 C46,322 36,330 26,336 Z" fill="url(#land)"/>
+<path d="M26,26 L330,26 C322,40 300,48 292,60 C284,74 262,78 252,92 C244,104 236,112 232,124 C228,138 214,146 204,156 C196,166 200,178 190,190 C178,204 160,206 150,220 C140,234 146,246 136,256 C128,266 112,272 104,286 C96,300 74,304 60,314 C46,322 36,330 26,336 Z" fill="url(#hatch)"/>
+<path d="M26,26 L330,26 C322,40 300,48 292,60 C284,74 262,78 252,92 C244,104 236,112 232,124 C228,138 214,146 204,156 C196,166 200,178 190,190 C178,204 160,206 150,220 C140,234 146,246 136,256 C128,266 112,272 104,286 C96,300 74,304 60,314 C46,322 36,330 26,336 Z" fill="none" stroke="#3b2412" stroke-width="1.6" opacity="1" transform="translate(0,0)" filter="url(#rough)"/>
+<path d="M26,26 L330,26 C322,40 300,48 292,60 C284,74 262,78 252,92 C244,104 236,112 232,124 C228,138 214,146 204,156 C196,166 200,178 190,190 C178,204 160,206 150,220 C140,234 146,246 136,256 C128,266 112,272 104,286 C96,300 74,304 60,314 C46,322 36,330 26,336 Z" fill="none" stroke="#3b2412" stroke-width="0.8" opacity="0.5" transform="translate(5,3)" filter="url(#rough)"/>
+<path d="M26,26 L330,26 C322,40 300,48 292,60 C284,74 262,78 252,92 C244,104 236,112 232,124 C228,138 214,146 204,156 C196,166 200,178 190,190 C178,204 160,206 150,220 C140,234 146,246 136,256 C128,266 112,272 104,286 C96,300 74,304 60,314 C46,322 36,330 26,336 Z" fill="none" stroke="#3b2412" stroke-width="0.6" opacity="0.3" transform="translate(10,6)" filter="url(#rough)"/>
+<g fill="#d9b678" stroke="#3b2412" stroke-width="1">
+<path d="M60,58 L73,40 L86,58 Z"/><path d="M73,40 L76,58" stroke-width=".5"/>
+<path d="M86,69 L99,46 L112,69 Z"/><path d="M99,46 L102,69" stroke-width=".5"/>
+<path d="M112,68 L125,40 L138,68 Z"/><path d="M125,40 L128,68" stroke-width=".5"/>
+<path d="M138,64 L151,46 L164,64 Z"/><path d="M151,46 L154,64" stroke-width=".5"/>
+<path d="M164,63 L177,40 L190,63 Z"/><path d="M177,40 L180,63" stroke-width=".5"/>
+<path d="M190,74 L203,46 L216,74 Z"/><path d="M203,46 L206,74" stroke-width=".5"/>
+<path d="M216,58 L229,40 L242,58 Z"/><path d="M229,40 L232,58" stroke-width=".5"/>
+<path d="M242,69 L255,46 L268,69 Z"/><path d="M255,46 L258,69" stroke-width=".5"/>
+<path d="M268,68 L281,40 L294,68 Z"/><path d="M281,40 L284,68" stroke-width=".5"/>
+<path d="M294,64 L307,46 L320,64 Z"/><path d="M307,46 L310,64" stroke-width=".5"/>
+</g>
+<text class="t" x="120" y="98" font-size="10" letter-spacing="3" font-style="italic">PYRENAEI MONTES</text>
+<text class="mono" x="138" y="110" font-size="8">( firewall )</text>
+<text class="t" x="34" y="142" font-size="19" letter-spacing="5" opacity=".85">TERRA</text>
+<text class="t" x="40" y="166" font-size="19" letter-spacing="5" opacity=".85">COGNITA</text>
+<text class="t" x="36" y="182" font-size="8.5" font-style="italic">production, mostly tested</text>
+<g><circle cx="214" cy="158" r="4.5" fill="#8b1e1e" stroke="#3b2412" stroke-width=".8"/><path d="M208,152 l0,-7 l3,3 l3,-5 l3,5 l3,-3 l0,7 z" fill="#8b1e1e" stroke="#3b2412" stroke-width=".7"/><text class="t" x="226" y="162" text-anchor="start" font-size="12" font-weight="bold">Barcino</text><text class="mono" x="226" y="172" text-anchor="start" font-size="7.5">git push origin main</text></g>
+<circle cx="214" cy="158" r="9" fill="none" stroke="#8b1e1e" stroke-width="1.2" class="glow"/>
+<g><circle cx="146" cy="232" r="3" fill="#8b1e1e" stroke="#3b2412" stroke-width=".8"/><text class="t" x="138" y="236" text-anchor="end" font-size="10" font-weight="bold">Tarraco</text><text class="mono" x="138" y="246" text-anchor="end" font-size="7.5">staging</text></g>
+<g><circle cx="82" cy="300" r="3" fill="#8b1e1e" stroke="#3b2412" stroke-width=".8"/><text class="t" x="74" y="304" text-anchor="end" font-size="10" font-weight="bold">Valentia</text><text class="mono" x="74" y="314" text-anchor="end" font-size="7.5">QA, abandoned</text></g>
+<path d="M429.5,214 L434.5,222.8 L423.2,229.4 L406.9,230 L392.4,231.5 L379.2,227.8 L367.7,222.2 L362.5,214 L373.8,207.3 L382.4,202.3 L391.5,194.3 L407.4,196.9 L423.2,198.6 L425.1,207.6 Z" fill="url(#land)" stroke="#3b2412" stroke-width="1.2" stroke-linejoin="round" filter="url(#rough)"/><path d="M429.5,214 L434.5,222.8 L423.2,229.4 L406.9,230 L392.4,231.5 L379.2,227.8 L367.7,222.2 L362.5,214 L373.8,207.3 L382.4,202.3 L391.5,194.3 L407.4,196.9 L423.2,198.6 L425.1,207.6 Z" fill="url(#hatch)"/><path d="M429.5,214 L434.5,222.8 L423.2,229.4 L406.9,230 L392.4,231.5 L379.2,227.8 L367.7,222.2 L362.5,214 L373.8,207.3 L382.4,202.3 L391.5,194.3 L407.4,196.9 L423.2,198.6 L425.1,207.6 Z" fill="none" stroke="#3b2412" stroke-width=".5" opacity=".4" transform="translate(3,2)"/>
+<path d="M488.6,190 L486.7,194.5 L478.4,195.9 L473,197.5 L466,199.8 L459.2,197.6 L454.7,194.1 L455.1,190 L455,185.9 L459.6,182.7 L466.3,181 L473.1,182.3 L479.7,183.1 L483.9,186.2 Z" fill="url(#land)" stroke="#3b2412" stroke-width="1.2" stroke-linejoin="round" filter="url(#rough)"/><path d="M488.6,190 L486.7,194.5 L478.4,195.9 L473,197.5 L466,199.8 L459.2,197.6 L454.7,194.1 L455.1,190 L455,185.9 L459.6,182.7 L466.3,181 L473.1,182.3 L479.7,183.1 L483.9,186.2 Z" fill="url(#hatch)"/><path d="M488.6,190 L486.7,194.5 L478.4,195.9 L473,197.5 L466,199.8 L459.2,197.6 L454.7,194.1 L455.1,190 L455,185.9 L459.6,182.7 L466.3,181 L473.1,182.3 L479.7,183.1 L483.9,186.2 Z" fill="none" stroke="#3b2412" stroke-width=".5" opacity=".4" transform="translate(3,2)"/>
+<path d="M330.7,236 L330.8,240 L326.3,242.7 L321.2,245.1 L314.7,245.2 L310.6,241.9 L307.6,239.2 L302.3,236 L306.5,232.4 L310.1,229.6 L314.3,225.7 L321.1,227.3 L327.8,228.1 L330.5,232.1 Z" fill="url(#land)" stroke="#3b2412" stroke-width="1.2" stroke-linejoin="round" filter="url(#rough)"/><path d="M330.7,236 L330.8,240 L326.3,242.7 L321.2,245.1 L314.7,245.2 L310.6,241.9 L307.6,239.2 L302.3,236 L306.5,232.4 L310.1,229.6 L314.3,225.7 L321.1,227.3 L327.8,228.1 L330.5,232.1 Z" fill="url(#hatch)"/><path d="M330.7,236 L330.8,240 L326.3,242.7 L321.2,245.1 L314.7,245.2 L310.6,241.9 L307.6,239.2 L302.3,236 L306.5,232.4 L310.1,229.6 L314.3,225.7 L321.1,227.3 L327.8,228.1 L330.5,232.1 Z" fill="none" stroke="#3b2412" stroke-width=".5" opacity=".4" transform="translate(3,2)"/>
+<text class="t" x="400" y="217" text-anchor="middle" font-size="9" font-weight="bold" letter-spacing="1">MAIORICA</text>
+<text class="mono" x="400" y="244" text-anchor="middle" font-size="7.5">localhost</text>
+<text class="t" x="490" y="182" font-size="8.5" font-weight="bold">Minorica</text>
+<text class="mono" x="490" y="192" font-size="7.5">127.0.0.1</text>
+<text class="t" x="296" y="258" text-anchor="middle" font-size="8.5" font-weight="bold">Ebusus</text>
+<text class="mono" x="296" y="267" text-anchor="middle" font-size="7.5">party mode</text>
+<path class="wave a" d="M300,110 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M360,90 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M560,70 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M700,160 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M700,215 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M540,150 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M330,170 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M640,255 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M250,215 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M690,50 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M470,60 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M420,140 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M820,220 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M200,280 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M240,250 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M480,250 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M760,250 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M60,360 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M150,430 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M230,385 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M330,440 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M420,400 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M520,445 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M640,430 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M720,380 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M810,440 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M270,330 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M560,320 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave b" d="M880,330 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave c" d="M40,420 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<path class="wave a" d="M380,330 q5.5,-5 11.0,0 t11.0,0" fill="none" stroke="#7a5a32" stroke-width="1.1" opacity=".75"/>
+<text class="t" x="636" y="222" text-anchor="middle" font-size="16" letter-spacing="7" font-style="italic" opacity=".9">MARE PVLL REQVESTVM</text>
+<text class="t" x="636" y="236" text-anchor="middle" font-size="8" font-style="italic">LGTM tides, merge conflicts at full moon</text>
+<g class="ship"><g class="rock" transform="translate(0,0)">
+<g transform="translate(345,128)" stroke="#3b2412" stroke-width="1" stroke-linejoin="round">
+  <path d="M-34,0 L34,0 L26,13 L-26,13 Z" fill="#8a5a2b"/>
+  <path d="M-30,4 L30,4" stroke-width=".6"/>
+  <circle cx="-14" cy="8" r="1.6" fill="#3b2412"/><circle cx="0" cy="8" r="1.6" fill="#3b2412"/><circle cx="14" cy="8" r="1.6" fill="#3b2412"/>
+  <path d="M34,0 L44,-6" />
+  <line x1="-14" y1="0" x2="-14" y2="-38"/><line x1="8" y1="0" x2="8" y2="-46"/>
+  <path d="M-26,-34 Q-14,-28 -2,-34 L-2,-8 Q-14,-12 -26,-8 Z" fill="#f3e2bd"/>
+  <path d="M-4,-42 Q8,-35 20,-42 L20,-10 Q8,-14 -4,-10 Z" fill="#f3e2bd"/>
+  <path d="M8,-46 L20,-50 L8,-53 Z" fill="#8b1e1e"/>
+  <path d="M-14,-38 L-24,-41 L-14,-44 Z" fill="#8b1e1e"/>
+  <text x="8" y="-22" text-anchor="middle" font-size="7" font-family="monospace" fill="#3b2412" stroke="none">main</text>
+</g>
+</g>
+<path d="M305,144 q10,-4 20,0 t20,0 t20,0 t20,0" fill="none" stroke="#7a5a32" stroke-width="1.1"/>
+<text class="t" x="345" y="158" text-anchor="middle" font-size="8" font-style="italic">navis main branch</text>
+</g>
+<g transform="translate(785,118)">
+<circle r="62" fill="#f3e2bd" fill-opacity=".55" stroke="#3b2412" stroke-width="1.2"/><circle r="56" fill="none" stroke="#3b2412" stroke-width=".5"/>
+<g class="rose">
+<circle r="62" fill="none" stroke="none"/>
+<g stroke="#3b2412" stroke-width=".6"><line x1="56" y1="0" x2="48" y2="0"/><line x1="55.7" y1="5.5" x2="51.7" y2="5.1"/><line x1="54.9" y1="10.9" x2="51" y2="10.1"/><line x1="53.6" y1="16.3" x2="49.8" y2="15.1"/><line x1="51.7" y1="21.4" x2="44.3" y2="18.4"/><line x1="49.4" y1="26.4" x2="45.9" y2="24.5"/><line x1="46.6" y1="31.1" x2="43.2" y2="28.9"/><line x1="43.3" y1="35.5" x2="40.2" y2="33"/><line x1="39.6" y1="39.6" x2="33.9" y2="33.9"/><line x1="35.5" y1="43.3" x2="33" y2="40.2"/><line x1="31.1" y1="46.6" x2="28.9" y2="43.2"/><line x1="26.4" y1="49.4" x2="24.5" y2="45.9"/><line x1="21.4" y1="51.7" x2="18.4" y2="44.3"/><line x1="16.3" y1="53.6" x2="15.1" y2="49.8"/><line x1="10.9" y1="54.9" x2="10.1" y2="51"/><line x1="5.5" y1="55.7" x2="5.1" y2="51.7"/><line x1="0" y1="56" x2="0" y2="48"/><line x1="-5.5" y1="55.7" x2="-5.1" y2="51.7"/><line x1="-10.9" y1="54.9" x2="-10.1" y2="51"/><line x1="-16.3" y1="53.6" x2="-15.1" y2="49.8"/><line x1="-21.4" y1="51.7" x2="-18.4" y2="44.3"/><line x1="-26.4" y1="49.4" x2="-24.5" y2="45.9"/><line x1="-31.1" y1="46.6" x2="-28.9" y2="43.2"/><line x1="-35.5" y1="43.3" x2="-33" y2="40.2"/><line x1="-39.6" y1="39.6" x2="-33.9" y2="33.9"/><line x1="-43.3" y1="35.5" x2="-40.2" y2="33"/><line x1="-46.6" y1="31.1" x2="-43.2" y2="28.9"/><line x1="-49.4" y1="26.4" x2="-45.9" y2="24.5"/><line x1="-51.7" y1="21.4" x2="-44.3" y2="18.4"/><line x1="-53.6" y1="16.3" x2="-49.8" y2="15.1"/><line x1="-54.9" y1="10.9" x2="-51" y2="10.1"/><line x1="-55.7" y1="5.5" x2="-51.7" y2="5.1"/><line x1="-56" y1="0" x2="-48" y2="0"/><line x1="-55.7" y1="-5.5" x2="-51.7" y2="-5.1"/><line x1="-54.9" y1="-10.9" x2="-51" y2="-10.1"/><line x1="-53.6" y1="-16.3" x2="-49.8" y2="-15.1"/><line x1="-51.7" y1="-21.4" x2="-44.3" y2="-18.4"/><line x1="-49.4" y1="-26.4" x2="-45.9" y2="-24.5"/><line x1="-46.6" y1="-31.1" x2="-43.2" y2="-28.9"/><line x1="-43.3" y1="-35.5" x2="-40.2" y2="-33"/><line x1="-39.6" y1="-39.6" x2="-33.9" y2="-33.9"/><line x1="-35.5" y1="-43.3" x2="-33" y2="-40.2"/><line x1="-31.1" y1="-46.6" x2="-28.9" y2="-43.2"/><line x1="-26.4" y1="-49.4" x2="-24.5" y2="-45.9"/><line x1="-21.4" y1="-51.7" x2="-18.4" y2="-44.3"/><line x1="-16.3" y1="-53.6" x2="-15.1" y2="-49.8"/><line x1="-10.9" y1="-54.9" x2="-10.1" y2="-51"/><line x1="-5.5" y1="-55.7" x2="-5.1" y2="-51.7"/><line x1="-0" y1="-56" x2="-0" y2="-48"/><line x1="5.5" y1="-55.7" x2="5.1" y2="-51.7"/><line x1="10.9" y1="-54.9" x2="10.1" y2="-51"/><line x1="16.3" y1="-53.6" x2="15.1" y2="-49.8"/><line x1="21.4" y1="-51.7" x2="18.4" y2="-44.3"/><line x1="26.4" y1="-49.4" x2="24.5" y2="-45.9"/><line x1="31.1" y1="-46.6" x2="28.9" y2="-43.2"/><line x1="35.5" y1="-43.3" x2="33" y2="-40.2"/><line x1="39.6" y1="-39.6" x2="33.9" y2="-33.9"/><line x1="43.3" y1="-35.5" x2="40.2" y2="-33"/><line x1="46.6" y1="-31.1" x2="43.2" y2="-28.9"/><line x1="49.4" y1="-26.4" x2="45.9" y2="-24.5"/><line x1="51.7" y1="-21.4" x2="44.3" y2="-18.4"/><line x1="53.6" y1="-16.3" x2="49.8" y2="-15.1"/><line x1="54.9" y1="-10.9" x2="51" y2="-10.1"/><line x1="55.7" y1="-5.5" x2="51.7" y2="-5.1"/></g>
+<g stroke="#3b2412" stroke-width=".6"><path d="M0,0 L0,-9 L15.3,-37 Z" fill="#c9a66b"/><path d="M0,0 L6.4,-6.4 L15.3,-37 Z" fill="#f3e2bd"/><path d="M0,0 L6.4,-6.4 L37,-15.3 Z" fill="#c9a66b"/><path d="M0,0 L9,0 L37,-15.3 Z" fill="#f3e2bd"/><path d="M0,0 L9,0 L37,15.3 Z" fill="#c9a66b"/><path d="M0,0 L6.4,6.4 L37,15.3 Z" fill="#f3e2bd"/><path d="M0,0 L6.4,6.4 L15.3,37 Z" fill="#c9a66b"/><path d="M0,0 L0,9 L15.3,37 Z" fill="#f3e2bd"/><path d="M0,0 L0,9 L-15.3,37 Z" fill="#c9a66b"/><path d="M0,0 L-6.4,6.4 L-15.3,37 Z" fill="#f3e2bd"/><path d="M0,0 L-6.4,6.4 L-37,15.3 Z" fill="#c9a66b"/><path d="M0,0 L-9,0 L-37,15.3 Z" fill="#f3e2bd"/><path d="M0,0 L-9,0 L-37,-15.3 Z" fill="#c9a66b"/><path d="M0,0 L-6.4,-6.4 L-37,-15.3 Z" fill="#f3e2bd"/><path d="M0,0 L-6.4,-6.4 L-15.3,-37 Z" fill="#c9a66b"/><path d="M0,0 L-0,-9 L-15.3,-37 Z" fill="#f3e2bd"/></g>
+<g stroke="#3b2412" stroke-width=".6"><path d="M0,0 L-7.8,-7.8 L0,-50 Z" fill="#3b2412"/><path d="M0,0 L7.8,-7.8 L0,-50 Z" fill="#f3e2bd"/><path d="M0,0 L7.8,-7.8 L50,0 Z" fill="#3b2412"/><path d="M0,0 L7.8,7.8 L50,0 Z" fill="#f3e2bd"/><path d="M0,0 L7.8,7.8 L0,50 Z" fill="#3b2412"/><path d="M0,0 L-7.8,7.8 L0,50 Z" fill="#f3e2bd"/><path d="M0,0 L-7.8,7.8 L-50,0 Z" fill="#3b2412"/><path d="M0,0 L-7.8,-7.8 L-50,0 Z" fill="#f3e2bd"/></g>
+</g>
+<path class="needle" d="M0,-30 L4,0 L0,30 L-4,0 Z" fill="#8b1e1e" stroke="#3b2412" stroke-width=".6"/>
+<circle r="4" fill="#f3e2bd" stroke="#3b2412"/>
+<text class="t" x="0" y="-66" text-anchor="middle" font-size="12" font-weight="bold">N</text>
+<text class="t" x="0" y="76" text-anchor="middle" font-size="12" font-weight="bold">S</text>
+<text class="t" x="72" y="4" text-anchor="middle" font-size="12" font-weight="bold">E</text>
+<text class="t" x="-72" y="4" text-anchor="middle" font-size="12" font-weight="bold">W</text>
+<path d="M-6,-78 L0,-90 L6,-78 Z" fill="#8b1e1e" stroke="#3b2412" stroke-width=".6"/>
+</g>
+<path class="dash" d="M26,282 C200,268 360,300 520,286 S760,270 874,284" fill="none" stroke="#3b2412" stroke-width="1.4" stroke-dasharray="2 5"/>
+<text class="t" x="540" y="264" font-size="9.5" font-style="italic">hic desinit documentatio</text>
+<text class="mono" x="540" y="273" font-size="7.5">here ends the documentation</text>
+<text class="t" x="720" y="262" font-size="9.5" font-style="italic">incipit codex hereditarius</text>
+<text class="mono" x="720" y="271" font-size="7.5">beyond lies the legacy code</text>
+<g class="bob">
+<g stroke="#3b2412" stroke-width="1.3" fill="#6f7f4a" stroke-linejoin="round">
+  <path d="M120,360 C120,330 150,330 150,360 Z"/>
+  <path d="M165,360 C165,332 195,332 195,360 Z"/>
+  <path d="M210,360 C210,338 234,338 234,360 Z"/>
+  <path d="M246,360 C252,350 262,346 272,336 C266,350 262,356 258,360 Z"/>
+  <path d="M120,360 C112,340 104,322 92,318 C78,314 62,322 60,334 C70,334 80,338 84,344 C92,352 100,358 104,360 Z"/>
+</g>
+<path d="M62,334 l-12,4 l6,2 l-6,4" class="ink" stroke="#8b1e1e" stroke-width="1.2"/>
+<circle cx="80" cy="326" r="2.4" fill="#f3e2bd" stroke="#3b2412"/><circle cx="80.6" cy="326" r="1" fill="#3b2412"/>
+<path d="M88,316 l2,-8 l4,7 l3,-9 l3,10" class="ink" stroke-width="1"/>
+<g stroke="#3b2412" stroke-width=".6"><path d="M127,348 l18,0 M172,346 l18,0 M216,350 l14,0" /></g>
+</g>
+<path d="M100,362 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0" class="wave" fill="none" stroke="#7a5a32" stroke-width="1.2"/>
+<text class="t" x="170" y="384" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing="1.5">SERPENS NVLLPTR</text><text class="mono" x="170" y="394" text-anchor="middle" font-size="7.5">deref at your own peril</text>
+<text class="mono" x="96" y="304" font-size="8" fill="#8b1e1e">*NULL</text>
+<g class="bob s">
+<g transform="translate(320,350)" stroke="#3b2412" stroke-width="1.1">
+  <path d="M-16,0 L16,0 L14,18 L-14,18 Z" fill="#a7783f"/>
+  <path d="M-15,6 L15,6 M-14.5,12 L14.5,12" stroke-width=".6"/>
+  <text x="0" y="16" text-anchor="middle" font-size="5" font-family="monospace" fill="#3b2412" stroke="none">core</text>
+  <path d="M-11,0 C-14,-16 -8,-26 0,-26 C8,-26 14,-16 11,0 Z" fill="#4a3a2a"/>
+  <path d="M-9,-22 L-10,-34 L-3,-26 M9,-22 L10,-34 L3,-26" fill="#4a3a2a"/>
+  <g class="blink"><circle cx="-4" cy="-19" r="2.2" fill="#e8c34a" stroke-width=".5"/><circle cx="4" cy="-19" r="2.2" fill="#e8c34a" stroke-width=".5"/></g>
+  <path d="M-2,-14 l2,2 l2,-2" fill="none" stroke="#f3e2bd" stroke-width=".7"/>
+  <path d="M11,-4 C22,-6 24,-18 18,-22" fill="none" stroke-width="2"/>
+</g>
+</g>
+<text class="t" x="320" y="395" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing="1.5">FELIS SEGFAULT</text><text class="mono" x="320" y="405" text-anchor="middle" font-size="7.5">core dumped, 9 lives</text>
+<g class="bob l">
+<g transform="translate(470,322)" stroke="#3b2412" stroke-width="1.3" fill="#7a3b3b" stroke-linejoin="round">
+<path class="tent d2" d="M-20,10 C-50,10 -60,30 -48,40 C-40,46 -34,36 -40,32" fill="none" stroke-width="5"/>
+<path class="tent d2" d="M-20,10 C-50,10 -60,30 -48,40 C-40,46 -34,36 -40,32" fill="none" stroke="#7a3b3b" stroke-width="3"/>
+<path class="tent d3" d="M-12,16 C-30,30 -34,46 -22,52 C-12,56 -10,44 -16,42" fill="none" stroke-width="5"/>
+<path class="tent d3" d="M-12,16 C-30,30 -34,46 -22,52 C-12,56 -10,44 -16,42" fill="none" stroke="#7a3b3b" stroke-width="3"/>
+<path class="tent r" d="M12,16 C30,30 34,46 22,52 C12,56 10,44 16,42" fill="none" stroke-width="5"/>
+<path class="tent r" d="M12,16 C30,30 34,46 22,52 C12,56 10,44 16,42" fill="none" stroke="#7a3b3b" stroke-width="3"/>
+<path class="tent r d2" d="M20,10 C50,10 60,30 48,40 C40,46 34,36 40,32" fill="none" stroke-width="5"/>
+<path class="tent r d2" d="M20,10 C50,10 60,30 48,40 C40,46 34,36 40,32" fill="none" stroke="#7a3b3b" stroke-width="3"/>
+<path d="M-6,18 C-8,40 6,40 4,54 M6,18 C8,40 -6,40 -4,54" fill="none" stroke-width="5"/>
+<path d="M-6,18 C-8,40 6,40 4,54 M6,18 C8,40 -6,40 -4,54" fill="none" stroke="#7a3b3b" stroke-width="3"/>
+<path d="M-24,18 C-28,-26 28,-26 24,18 C14,24 -14,24 -24,18 Z"/>
+<g class="blink"><circle cx="-9" cy="4" r="4" fill="#f3e2bd"/><circle cx="9" cy="4" r="4" fill="#f3e2bd"/></g><circle cx="-9" cy="5" r="1.6" fill="#3b2412"/><circle cx="9" cy="5" r="1.6" fill="#3b2412"/>
+</g>
+<text class="mono" x="436" y="380" font-size="6.5" text-anchor="end">mutex A</text><text class="mono" x="504" y="380" font-size="6.5">mutex B</text>
+</g>
+<path d="M420,364 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0" class="wave b" fill="none" stroke="#7a5a32" stroke-width="1.2"/>
+<text class="t" x="470" y="404" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing="1.5">KRAKEN DEADLOCK</text><text class="mono" x="470" y="414" text-anchor="middle" font-size="7.5">waits for itself, forever</text>
+<g transform="translate(610,372)">
+<path d="M-40,0 C-36,-26 36,-26 40,0 Z" fill="#5f6e43" stroke="#3b2412" stroke-width="1.3"/>
+<g class="head h0">
+<path d="M-11.9,-14 Q-20.4,-29 -34,-58" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M-11.9,-14 Q-20.4,-29 -34,-58" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="-34" cy="-58" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="-32" cy="-59" r="1.2" fill="#8b1e1e"/>
+<path d="M-29,-57 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h1">
+<path d="M-6.3,-14 Q-10.8,-35 -18,-70" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M-6.3,-14 Q-10.8,-35 -18,-70" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="-18" cy="-70" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="-16" cy="-71" r="1.2" fill="#8b1e1e"/>
+<path d="M-13,-69 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h2">
+<path d="M0,-14 Q0,-38 0,-76" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M0,-14 Q0,-38 0,-76" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="0" cy="-76" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="2" cy="-77" r="1.2" fill="#8b1e1e"/>
+<path d="M5,-75 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h3">
+<path d="M6.3,-14 Q10.8,-35 18,-70" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M6.3,-14 Q10.8,-35 18,-70" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="18" cy="-70" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="20" cy="-71" r="1.2" fill="#8b1e1e"/>
+<path d="M23,-69 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h4">
+<path d="M11.9,-14 Q20.4,-29 34,-58" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M11.9,-14 Q20.4,-29 34,-58" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="34" cy="-58" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="36" cy="-59" r="1.2" fill="#8b1e1e"/>
+<path d="M39,-57 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h5">
+<path d="M-15.4,-14 Q-26.4,-19 -44,-38" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M-15.4,-14 Q-26.4,-19 -44,-38" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="-44" cy="-38" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="-42" cy="-39" r="1.2" fill="#8b1e1e"/>
+<path d="M-39,-37 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<g class="head h0">
+<path d="M15.4,-14 Q26.4,-19 44,-38" fill="none" stroke="#3b2412" stroke-width="6" stroke-linecap="round"/>
+<path d="M15.4,-14 Q26.4,-19 44,-38" fill="none" stroke="#5f6e43" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="44" cy="-38" rx="6" ry="4.5" fill="#5f6e43" stroke="#3b2412" stroke-width="1"/>
+<circle cx="46" cy="-39" r="1.2" fill="#8b1e1e"/>
+<path d="M49,-37 l5,1" stroke="#8b1e1e" stroke-width=".8"/>
+</g>
+<path d="M-50,0 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0" class="wave c" fill="none" stroke="#7a5a32" stroke-width="1.2"/>
+</g>
+<text class="mono" x="610" y="300" font-size="7" text-anchor="middle" opacity="0">.</text>
+<text class="t" x="610" y="390" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing=".5">HYDRA DEPENDENTIARVM</text><text class="mono" x="610" y="400" text-anchor="middle" font-size="7.5">cut one head, npm installs 42</text>
+<g class="bob l">
+<g class="leak">
+<g transform="translate(790,370)" stroke="#3b2412" stroke-width="1.3" stroke-linejoin="round">
+  <path d="M-62,0 C-62,-34 -20,-44 14,-36 C36,-30 50,-18 56,-8 C66,-14 74,-26 80,-24 C76,-14 72,-6 66,0 Z" fill="#55647a"/>
+  <path d="M-58,-6 C-30,2 20,2 50,-4" fill="none" stroke-width=".7"/>
+  <path d="M-52,-2 l0,6 M-44,-1 l0,7 M-36,0 l0,7 M-28,0 l0,7" stroke-width=".6"/>
+  <circle cx="-42" cy="-20" r="3.2" fill="#f3e2bd"/><circle cx="-42" cy="-20" r="1.4" fill="#3b2412"/>
+  <path d="M-6,-30 C0,-24 10,-24 16,-30" fill="none" stroke-width=".7"/>
+</g>
+</g>
+<g class="spout" fill="none" stroke="#7a5a32" stroke-width="1.2"><path d="M770,330 C766,318 758,314 752,316 M770,330 C772,316 780,312 788,316 M770,330 L770,314"/></g>
+<text class="mono spout" x="770" y="306" text-anchor="middle" font-size="9" font-weight="bold" fill="#8b1e1e">RAM++</text>
+</g>
+<path d="M720,372 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0" class="wave" fill="none" stroke="#7a5a32" stroke-width="1.2"/>
+<text class="t" x="790" y="390" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing=".6">LEVIATHAN MEMORY LEAK</text><text class="mono" x="790" y="400" text-anchor="middle" font-size="7.5">never free()d, never sated</text>
+<g class="bob s">
+<g transform="translate(70,440)" stroke="#3b2412" stroke-width="1.1" stroke-linejoin="round">
+  <path d="M0,-6 C10,-2 22,4 30,0 C38,-4 40,-12 48,-10 C44,-6 46,0 52,2 C44,2 40,0 34,4 C24,10 6,8 -4,2 Z" fill="#4f7a6a"/>
+  <path d="M-8,-24 C-12,-14 -8,-6 0,-6 C6,-6 8,-14 4,-22 Z" fill="#e8c9a0"/>
+  <circle cx="-2" cy="-28" r="6" fill="#e8c9a0"/>
+  <circle cx="-4" cy="-29" r=".9" fill="#3b2412"/><circle cx="0" cy="-29" r=".9" fill="#3b2412"/>
+</g>
+<path class="noodle" d="M64,416 C54,420 58,430 50,434 C44,438 50,446 42,450" fill="none" stroke="#c99a2e" stroke-width="1.6"/>
+<path class="noodle" d="M68,414 C62,424 70,428 62,436 C56,442 62,448 56,456" fill="none" stroke="#c99a2e" stroke-width="1.6"/>
+<path class="noodle" d="M72,414 C80,422 74,428 82,432 C88,436 82,444 90,446" fill="none" stroke="#c99a2e" stroke-width="1.6"/>
+<path class="noodle" d="M66,414 C60,410 52,416 46,412 C40,408 36,416 30,414" fill="none" stroke="#c99a2e" stroke-width="1.6"/>
+</g>
+<text class="t" x="122" y="440" font-size="10" font-weight="bold" letter-spacing="1.5">SIRENA SPAGHETTIS</text>
+<text class="mono" x="122" y="450" font-size="7.5">sings in goto, lures you to rewrite it</text>
+<g transform="translate(540,456)">
+  <path d="M-170,-14 L-196,-14 L-184,2 L-196,18 L-160,18 Z" fill="#c9a66b" stroke="#3b2412" stroke-width="1"/>
+  <path d="M170,-14 L196,-14 L184,2 L196,18 L160,18 Z" fill="#c9a66b" stroke="#3b2412" stroke-width="1"/>
+  <path d="M-170,-20 Q0,-30 170,-20 L170,12 Q0,2 -170,12 Z" fill="#f1dcae" stroke="#3b2412" stroke-width="1.2"/>
+  <text class="bl" x="0" y="2" text-anchor="middle" font-size="25" letter-spacing="2" fill="#8b1e1e">Hic Svnt Dracones</text>
+</g>
+</g>
+<rect x="10" y="10" width="880" height="480" fill="none" stroke="#3b2412" stroke-width="2.2"/>
+<rect x="16" y="16" width="868" height="468" fill="none" stroke="#3b2412" stroke-width=".8"/>
+<rect x="26" y="26" width="848" height="448" fill="none" stroke="#3b2412" stroke-width="1.2"/>
+<g fill="#3b2412" opacity=".8"><rect x="16" y="16" width="20" height="10"/><rect x="16" y="474" width="20" height="10"/><rect x="56" y="16" width="20" height="10"/><rect x="56" y="474" width="20" height="10"/><rect x="96" y="16" width="20" height="10"/><rect x="96" y="474" width="20" height="10"/><rect x="136" y="16" width="20" height="10"/><rect x="136" y="474" width="20" height="10"/><rect x="176" y="16" width="20" height="10"/><rect x="176" y="474" width="20" height="10"/><rect x="216" y="16" width="20" height="10"/><rect x="216" y="474" width="20" height="10"/><rect x="256" y="16" width="20" height="10"/><rect x="256" y="474" width="20" height="10"/><rect x="296" y="16" width="20" height="10"/><rect x="296" y="474" width="20" height="10"/><rect x="336" y="16" width="20" height="10"/><rect x="336" y="474" width="20" height="10"/><rect x="376" y="16" width="20" height="10"/><rect x="376" y="474" width="20" height="10"/><rect x="416" y="16" width="20" height="10"/><rect x="416" y="474" width="20" height="10"/><rect x="456" y="16" width="20" height="10"/><rect x="456" y="474" width="20" height="10"/><rect x="496" y="16" width="20" height="10"/><rect x="496" y="474" width="20" height="10"/><rect x="536" y="16" width="20" height="10"/><rect x="536" y="474" width="20" height="10"/><rect x="576" y="16" width="20" height="10"/><rect x="576" y="474" width="20" height="10"/><rect x="616" y="16" width="20" height="10"/><rect x="616" y="474" width="20" height="10"/><rect x="656" y="16" width="20" height="10"/><rect x="656" y="474" width="20" height="10"/><rect x="696" y="16" width="20" height="10"/><rect x="696" y="474" width="20" height="10"/><rect x="736" y="16" width="20" height="10"/><rect x="736" y="474" width="20" height="10"/><rect x="776" y="16" width="20" height="10"/><rect x="776" y="474" width="20" height="10"/><rect x="816" y="16" width="20" height="10"/><rect x="816" y="474" width="20" height="10"/><rect x="856" y="16" width="20" height="10"/><rect x="856" y="474" width="20" height="10"/><rect x="16" y="16" width="10" height="20"/><rect x="874" y="16" width="10" height="20"/><rect x="16" y="56" width="10" height="20"/><rect x="874" y="56" width="10" height="20"/><rect x="16" y="96" width="10" height="20"/><rect x="874" y="96" width="10" height="20"/><rect x="16" y="136" width="10" height="20"/><rect x="874" y="136" width="10" height="20"/><rect x="16" y="176" width="10" height="20"/><rect x="874" y="176" width="10" height="20"/><rect x="16" y="216" width="10" height="20"/><rect x="874" y="216" width="10" height="20"/><rect x="16" y="256" width="10" height="20"/><rect x="874" y="256" width="10" height="20"/><rect x="16" y="296" width="10" height="20"/><rect x="874" y="296" width="10" height="20"/><rect x="16" y="336" width="10" height="20"/><rect x="874" y="336" width="10" height="20"/><rect x="16" y="376" width="10" height="20"/><rect x="874" y="376" width="10" height="20"/><rect x="16" y="416" width="10" height="20"/><rect x="874" y="416" width="10" height="20"/><rect x="16" y="456" width="10" height="20"/><rect x="874" y="456" width="10" height="20"/></g>
+<g transform="translate(470,50)">
+  <path d="M-110,-16 L110,-16 Q120,-16 120,-6 L120,8 Q120,18 110,18 L-110,18 Q-120,18 -120,8 L-120,-6 Q-120,-16 -110,-16 Z" fill="#f3e2bd" fill-opacity=".85" stroke="#3b2412" stroke-width="1.2"/>
+  <path d="M-114,-12 L114,-12 L114,14 L-114,14 Z" fill="none" stroke="#3b2412" stroke-width=".5"/>
+  <text class="t" x="0" y="2" text-anchor="middle" font-size="14" letter-spacing="4" font-weight="bold">MAPPA MVNDI CODICIS</text>
+  <text class="t" x="0" y="12" text-anchor="middle" font-size="7" font-style="italic" letter-spacing="1">L. Agusti cartographus fecit · anno MMXXVI</text>
+</g>
+<text class="t" x="864" y="446" text-anchor="end" font-size="8" font-style="italic" opacity=".85">navigare necesse est,</text>
+<text class="t" x="864" y="457" text-anchor="end" font-size="8" font-style="italic" opacity=".85">compilare non est necesse</text>
+</svg>
