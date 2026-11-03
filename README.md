@@ -1,15 +1,11 @@
 <div align="center">
 
-# 🐉 Hic Sunt Dracones
-
-### *Terra cognita ends at the last commit. Beyond it, there be dragons.*
-
 <img src="./dracones.svg" width="100%" alt="Hic Sunt Dracones map">
 
 </div>
 
 <details>
-<summary>🗺️ View the map in ASCII (for those who read assembly)</summary>
+<summary>🗺️ ASCII</summary>
 
 ```text
 +========================================================================================+
@@ -65,29 +61,5 @@
 </details>
 
 <div align="center">
-
-**Legenda**
-
-| Sign | Meaning |
-|:---:|:---|
-| `*` | known lands, mostly tested |
-| `~` | open waters of open source |
-| `. . .` | the edge of the documentation |
-| 🐉 | uncharted code: here be dragons |
-
-**Bestiarium**
-
-| Creature | Habitat | Danger |
-|:---|:---|:---|
-| 🐍 **Serpens Nullptr** | uninitialised pointers | deref at your own peril |
-| 🐈‍⬛ **Felis Segfault** | the core dump barrel | nine lives, nine crashes |
-| 🐙 **Kraken Deadlock** | two threads, two mutexes | waits for itself, forever |
-| 🐉 **Hydra Dependentiarum** | `node_modules` | cut one head, npm installs 42 |
-| 🐋 **Leviathan Memory Leak** | the heap | never `free()`d, never sated |
-| 🧜 **Sirena Spaghettis** | legacy shallows | sings in `goto`, lures you to rewrite it |
-
-*Navigare necesse est, compilare non est necesse.*
-
-<sub>578 repositories charted so far. Travellers enter at their own risk; pull requests welcome.</sub>
 
 </div>
